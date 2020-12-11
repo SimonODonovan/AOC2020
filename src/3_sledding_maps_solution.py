@@ -51,7 +51,7 @@ class SleddingMapDetailer():
                        self.slope4_trees, self.slope5_trees]
         return reduce((lambda x, y: x*y), slope_trees)
 
-map_path = '3_sledding_maps.txt'
+map_path = '3_sledding_maps_input.txt'
 smd = SleddingMapDetailer()
 trees_encountered = smd.calculate_slope_details(map_path)
 print(trees_encountered)
