@@ -30,7 +30,7 @@ def _validate_expiry_year(passport):
 
 def _validate_height(passport):
     ret = False
-    match = re.match(r'(\d{2,3})(\w{2})', passport['hgt'])
+    match = re.fullmatch(r'(\d{2,3})(\w{2})', passport['hgt'])
     if match:
         height = int(match.groups()[0])
         unit = match.groups()[1]
@@ -41,14 +41,14 @@ def _validate_height(passport):
     return ret
 
 def _validate_hair_colour(passport):
-    return re.search('#[0-9a-f]{6}', passport['hcl'])
+    return re.fullmatch('#[0-9a-f]{6}', passport['hcl'])
 
 def _validate_eye_colour(passport):
     valid_eye_colours = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
     return passport['ecl'] in valid_eye_colours
 
 def _validate_passport_id(passport):
-    return re.search(r'\d{9}', passport['pid'])
+    return re.fullmatch(r'^[0-9]{9}$', passport['pid'])
 
 valid_passport_count = 0
 passport_input = '4_passport_validation_input.txt'
@@ -56,7 +56,7 @@ with open(passport_input) as passport_input:
     current_passport = dict()
     for line in passport_input:
         if line == '\n':
-            is_valid = validate_passport(current_passport)
+            is_valid = validate_passport(current_passport) # todo STEP THROUGH AND FIND OUT WHY TOO MANY PASSPORTS ARE GETTING THROUGH !!!!!!!!!!
             valid_passport_count +=1 if is_valid else 0
             current_passport = dict() # reset on empty line
         else:
