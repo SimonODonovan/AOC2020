@@ -1,5 +1,5 @@
 import re
-from src import utils
+import utils
 
 ##################################################
 # AOC 2020 - https://adventofcode.com/2020/day/2 #
@@ -7,7 +7,7 @@ from src import utils
 
 def get_password_policy(line):
     validation_numbers = re.findall('[0-9]+', line)
-    validation_letter = re.search(r"\s(\w)\W\s", line).group(1)
+    validation_letter = re.search(r'\s(\w)\W\s', line).group(1)
     primary = int(validation_numbers[0])
     secondary = int(validation_numbers[1])
     return (primary, secondary, validation_letter)
