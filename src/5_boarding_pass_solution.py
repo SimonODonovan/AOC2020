@@ -30,7 +30,6 @@ for seating_instruction in seating_instructions_list:
     seat_id = generate_seat_id(row, col)
     if seat_id > max_seat_id:
         max_seat_id = seat_id
-        print(seating_instruction)
     occupied_seats.append(seat_id)
 print(max_seat_id)
 
