@@ -56,7 +56,7 @@ with open(passport_input) as passport_input:
     current_passport = dict()
     for line in passport_input:
         if line == '\n':
-            is_valid = validate_passport(current_passport) # todo STEP THROUGH AND FIND OUT WHY TOO MANY PASSPORTS ARE GETTING THROUGH !!!!!!!!!!
+            is_valid = validate_passport(current_passport)
             valid_passport_count +=1 if is_valid else 0
             current_passport = dict() # reset on empty line
         else:
